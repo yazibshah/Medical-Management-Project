@@ -1,0 +1,1057 @@
+USE [MEDICAL]
+GO
+/****** Object:  StoredProcedure [dbo].[CategoryMst_Update]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[CategoryMst_Update]
+@Cg_Id as int, 
+	@Cg_Name as nvarchar(250)
+AS
+BEGIN
+	update CategoryMst set Cg_Name=@Cg_Name where Cg_Id=@Cg_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[CategoryMst_Select_duplict]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[CategoryMst_Select_duplict] 
+
+	@Cg_Name as nvarchar(250)
+
+AS
+BEGIN
+	select * from CategoryMst where Cg_Name=@Cg_Name
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[CategoryMst_Select_By_ID]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[CategoryMst_Select_By_ID]
+@Cg_Id as int
+AS
+BEGIN
+select* from CategoryMst  where Cg_Id=@Cg_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[CategoryMst_Select]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[CategoryMst_Select] 
+	
+AS
+BEGIN
+	select * from CategoryMst
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[CategoryMst_Insert]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[CategoryMst_Insert] 
+	@Cg_Name as nvarchar(250)
+
+AS
+BEGIN
+ 	 Insert into CategoryMst values(@Cg_Name)
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[CategoryMst_Delete]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[CategoryMst_Delete]
+@Cg_Id as int
+AS
+BEGIN
+	delete from CategoryMst  where Cg_Id=@Cg_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[UserMst_Update_password]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[UserMst_Update_password]
+
+	@U_Name as nvarchar(250),
+@U_Password as nvarchar(250)
+
+AS
+BEGIN
+	update UserMst set U_Password=@U_Password where U_Name=@U_Name
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[UserMst_Update]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[UserMst_Update]
+@U_Id as int, 
+	@U_Name as nvarchar(250),
+@U_Password as nvarchar(250),
+@U_Type as nvarchar(250),
+@E_Date as datetime
+AS
+BEGIN
+	update UserMst set U_Name=@U_Name,U_Password=@U_Password,U_Type=@U_Type,E_Date=@E_Date where U_Id=@U_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[UserMst_Select_for_login]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[UserMst_Select_for_login] 
+	
+@name as nvarchar(256),
+@pass as nvarchar(256)
+AS
+BEGIN
+	select * from UserMst where u_name=@name and u_password=@pass
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[UserMst_Select_duplict]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[UserMst_Select_duplict] 
+@U_Name as nvarchar(250)	
+
+AS
+BEGIN
+	select * from UserMst where U_Name=@U_Name
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[UserMst_Select_By_ID]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[UserMst_Select_By_ID]
+@U_Id as int
+AS
+BEGIN
+select* from UserMst  where U_Id=@U_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[UserMst_Select]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[UserMst_Select] 
+	
+AS
+BEGIN
+	select * from UserMst
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[UserMst_Insert]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[UserMst_Insert] 
+	@U_Name as nvarchar(250),
+@U_Password as nvarchar(250),
+@E_Date as datetime
+AS
+BEGIN
+	Insert into UserMst values(@U_Name,@U_Password,@E_Date)
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[UserMst_Delete]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create PROCEDURE [dbo].[UserMst_Delete]
+@U_Id as int
+AS
+BEGIN
+	delete from UserMst  where U_Id=@U_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[ClientMst_Update]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[ClientMst_Update]
+@CU_Id as int, 
+@CU_Name as nvarchar(250),
+@CU_Surname as nvarchar(250),
+@CU_Mobile_No as float,
+@CU_Address as nvarchar(250),
+@CU_City as nvarchar(250)
+AS
+BEGIN
+  	update ClientMst set CU_Name=@CU_Name,CU_Surname=@CU_Surname,CU_Mobile_No=@CU_Mobile_No,CU_Address=@CU_Address,CU_City=@CU_City where CU_Id=@CU_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[ClientMst_Select_duplict]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[ClientMst_Select_duplict] 
+
+@CU_Name as nvarchar(250),
+@CU_Surname as nvarchar(250)	
+AS
+BEGIN
+	select * from ClientMst where CU_Name=@CU_Name and CU_Surname=@CU_Surname
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[ClientMst_Select_By_ID]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create PROCEDURE [dbo].[ClientMst_Select_By_ID]
+@CU_Id as int
+AS
+BEGIN
+select* from ClientMst  where CU_Id=@CU_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[ClientMst_Select]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create PROCEDURE [dbo].[ClientMst_Select] 
+	
+AS
+BEGIN
+	select * from ClientMst
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[ClientMst_Insert]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[ClientMst_Insert] 
+	@CU_Name as nvarchar(250),
+@CU_Surname as nvarchar(250),
+@CU_Mobile_No as float,
+@CU_Address as nvarchar(250),
+@CU_City as nvarchar(250)
+AS
+BEGIN
+	Insert into ClientMst values(@CU_Name,@CU_Surname,@CU_Mobile_No,@CU_Address,@CU_City)
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[ClientMst_Delete]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[ClientMst_Delete]
+@CU_Id as int
+AS
+BEGIN
+	delete from ClientMst  where CU_Id=@CU_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockOutMst_Update]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[StockOutMst_Update]
+@S_Id as int,
+@C_Name as nvarchar(256),
+@I_Name as nvarchar(256),
+@Quantity as int,
+@Price as Float,
+@TotalPrice as Float,
+@stutas as int,
+@Entry_Date as datetime
+AS
+BEGIN
+	update StockOutMst set C_Name=@C_Name,I_Name=@I_Name,Quantity=@Quantity,Price=@Price,TotalPrice=@totalPrice,stutas=@stutas,Entry_Date=@Entry_Date where S_Id=@S_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockOutMst_Select_By_item_name]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[StockOutMst_Select_By_item_name]
+@i_Name as nvarchar(250)
+
+AS
+BEGIN
+select* from StockOutMst  where i_Name=@i_Name
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockOutMst_Select_By_ID]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[StockOutMst_Select_By_ID]
+@S_Id as int
+AS
+BEGIN
+select* from StockOutMst  where S_Id=@S_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockOutMst_Select_By_Cname]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[StockOutMst_Select_By_Cname]
+@C_Name as nvarchar(250),
+@stutas as int
+AS
+BEGIN
+select* from StockOutMst  where C_Name=@C_Name and stutas=0
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockOutMst_Select_By_Client_name]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[StockOutMst_Select_By_Client_name]
+@C_Name as nvarchar(250)
+
+AS
+BEGIN
+select* from StockOutMst  where C_Name=@C_Name
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockOutMst_Select]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[StockOutMst_Select] 
+	
+AS
+BEGIN
+	select * from StockOutMst
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockOutMst_item_update_qnt]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[StockOutMst_item_update_qnt]
+@iname as nvarchar(250),
+@qnt as int
+
+AS
+BEGIN
+update StockOutMst  set quantity=quantity+@qnt,totalprice=quantity*price where i_name=@iname and stutas=0
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockOutMst_item_allready_added]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[StockOutMst_item_allready_added]
+@iname as nvarchar(250)
+
+AS
+BEGIN
+select* from StockOutMst  where i_name=@iname and stutas=0
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockOutMst_Insert]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[StockOutMst_Insert] 
+@C_Name as nvarchar(256),
+@I_Name as nvarchar(256),
+@Quantity as int,
+@Price as Float,
+@TotalPrice as Float,
+@Stutas as int,
+@Entry_Date as datetime
+AS
+BEGIN
+ 	Insert into StockOutMst values(@C_Name,@I_Name,@Quantity,@Price,@TotalPrice,@Stutas,@Entry_Date)
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockOutMst_Delete]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[StockOutMst_Delete]
+@S_Id as int
+AS
+BEGIN
+	delete from StockOutMst  where S_Id=@S_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockOutMst_Delet_pendingoder]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[StockOutMst_Delet_pendingoder]
+@C_Name as nvarchar(250)
+
+AS
+BEGIN
+	delete from StockOutMst  where stutas=0 and C_Name=@C_Name
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockMst_Update]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[StockMst_Update]
+@S_Id as int,
+@I_Id as int,
+@TotalQuantity as int,
+@SellQuantity as int,
+@AvailableQuantity as int,
+@TotalPrice as Float,
+@SellPrice as Float,
+@AvailablePrice as Float,
+@Entrydate as datetime
+AS
+BEGIN
+	update StockMst set I_Id=@I_Id,TotalQuantity=@TotalQuantity,SellQuantity=@SellQuantity,AvailableQuantity=@AvailableQuantity,TotalPrice=@TotalPrice,SellPrice=@SellPrice,AvailablePrice=@AvailablePrice,Entrydate=@Entrydate where S_Id=@S_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockMst_SELL_Update_Quantity]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[StockMst_SELL_Update_Quantity]
+
+@qnt as int,
+@price as float,
+@iname as nvarchar(256)
+AS
+BEGIN
+	update StockMst set TotalQuantity=TotalQuantity-@qnt,sellquantity=sellquantity+@qnt,AvailableQuantity=AvailableQuantity-@qnt,TotalPrice=TotalPrice-@price,SellPrice=Sellprice+@price,AvailablePrice=AvailablePrice-@price,Entrydate=getdate() where iname=@iname
+
+
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockMst_Select_BY_INAME]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[StockMst_Select_BY_INAME] 
+	@iname as nvarchar(256)
+AS
+BEGIN
+	select * from StockMst where iname=@iname
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockMst_Select_By_ID]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create PROCEDURE [dbo].[StockMst_Select_By_ID]
+@S_Id as int
+AS
+BEGIN
+select* from StockMst  where S_Id=@S_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockMst_Select]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create PROCEDURE [dbo].[StockMst_Select] 
+	
+AS
+BEGIN
+	select * from StockMst
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockMst_Insert]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[StockMst_Insert] 
+@Iname as nvarchar(256),
+@price as float,
+@TotalQuantity as int,
+@SellQuantity as int,
+@AvailableQuantity as int,
+@TotalPrice as Float,
+@SellPrice as Float,
+@AvailablePrice as Float,
+@Entrydate as datetime
+AS
+BEGIN
+ 	Insert into StockMst values(@Iname,@price,@TotalQuantity,@SellQuantity,@AvailableQuantity,@TotalPrice,@SellPrice,@AvailablePrice,@Entrydate)
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockMst_Delete]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create PROCEDURE [dbo].[StockMst_Delete]
+@S_Id as int
+AS
+BEGIN
+	delete from StockMst  where S_Id=@S_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockMst_ADD_Update_Quantity]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[StockMst_ADD_Update_Quantity]
+
+@qnt as int,
+@price as float,
+@iname as nvarchar(256)
+AS
+BEGIN
+	update StockMst set TotalQuantity=TotalQuantity+@qnt,AvailableQuantity=AvailableQuantity+@qnt,TotalPrice=TotalPrice+@price,AvailablePrice=AvailablePrice+@price,Entrydate=getdate() where iname=@iname
+
+
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockInMst_Updateitem]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[StockInMst_Updateitem]
+@I_Id as int,
+@I_Quantity as int
+
+AS
+BEGIN
+	update StockInMst set I_Quantity=I_Quantity+@I_Quantity where I_Id=@I_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockInMst_Update]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[StockInMst_Update]
+@I_Id as int,
+@I_Name as nvarchar(250),
+@I_Descrip as nvarchar(250),
+@I_Quantity as int,
+@I_Price as float,
+@C_Id as int,
+@I_Ex_Date as datetime,
+@I_Location as nvarchar(250)
+AS
+BEGIN
+	update StockInMst set I_Name=@I_Name,I_Descrip=@I_Descrip,I_Quantity=@I_Quantity,I_Price=@I_Price,C_Id=@C_Id,I_Ex_Date=@I_Ex_Date,I_Location=@I_Location where I_Id=@I_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockInMst_Select_with_catename]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[StockInMst_Select_with_catename] 
+	
+AS
+BEGIN
+	select s.I_Name,s.I_Descrip,s.I_Quantity,s.I_Price,s.I_Location,s.I_Ex_Date,c.cg_name from StockInMst as s , categorymst as c where c.cg_id=s.c_id
+
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockInMst_Select_duplict]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[StockInMst_Select_duplict] 
+@I_Name as nvarchar(250)	
+
+AS
+BEGIN
+	select * from StockInMst where I_Name=@I_Name
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockInMst_Select_BY_INAME]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[StockInMst_Select_BY_INAME] 
+@iname as nvarchar(256)	
+
+AS
+BEGIN
+	select * from StockInMst where i_name=@iname
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockInMst_Select_By_ID]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create PROCEDURE [dbo].[StockInMst_Select_By_ID]
+@I_Id as int
+AS
+BEGIN
+select* from StockInMst  where I_Id=@I_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockInMst_Select_BY_cname]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[StockInMst_Select_BY_cname] 
+@cname as nvarchar(256)	
+
+AS
+BEGIN
+	select * from StockInMst where c_name=@cname
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockInMst_Select_By_CID]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create PROCEDURE [dbo].[StockInMst_Select_By_CID]
+@C_Id as int
+AS
+BEGIN
+select* from StockInMst  where C_Id=@C_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockInMst_Select]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[StockInMst_Select] 
+	
+
+AS
+BEGIN
+	select * from StockInMst 
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockInMst_Insert]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[StockInMst_Insert] 
+@I_Name as nvarchar(250),
+@I_Descrip as nvarchar(250),
+@I_Quantity as int,
+@I_Price as float,
+@C_name as nvarchar(256),
+@I_Ex_Date as datetime,
+@I_Location as nvarchar(250)
+
+AS
+BEGIN
+ 	Insert into StockInMst values(@I_Name,@I_Descrip,@I_Quantity,@I_Price,@C_name,@I_Ex_Date,@I_Location)
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[StockInMst_Delete]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[StockInMst_Delete]
+@name as nvarchar(250)
+AS
+BEGIN
+	delete from StockInMst  where I_Name=@name
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SALES_UPDATE]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[SALES_UPDATE]
+
+@iname as nvarchar(256),
+@QNT AS nvarchar(256),
+@TPRICE AS FLOAT
+AS
+BEGIN
+	update  SALESMST set quantity=@QNT,tprice=@TPRICE,Entrydate=GETDATE() where iname=@iname
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SALES_SELECT_SUM_TOTAL]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create  PROCEDURE [dbo].[SALES_SELECT_SUM_TOTAL]
+
+AS
+BEGIN
+	
+SELECT sum(Quantity) as qnt, sum(Tprice) as Tprice FROM SALESMST
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SALES_SELECT_by_Pname]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create  PROCEDURE [dbo].[SALES_SELECT_by_Pname]
+@pname as nvarchar(256)
+as
+BEGIN
+	
+SELECT * FROM SALESMST where customer=@pname
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SALES_SELECT_by_name]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create  PROCEDURE [dbo].[SALES_SELECT_by_name]
+@iname as nvarchar(256)
+as
+BEGIN
+	
+SELECT * FROM SALESMST where iname=@iname
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SALES_SELECT_by_id]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create  PROCEDURE [dbo].[SALES_SELECT_by_id]
+@id as int
+AS
+BEGIN
+	
+SELECT * FROM SALESMST where id=@id
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SALES_SELECT]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create   PROCEDURE [dbo].[SALES_SELECT]
+
+AS
+BEGIN
+	
+SELECT * FROM SALESMST
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SALES_INSERT]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE  PROCEDURE [dbo].[SALES_INSERT]
+@PNAME AS NVARCHAR(256),
+@NAME AS NVARCHAR(256),
+@PRICE AS FLOAT,
+@QNT AS int,
+@TPRICE AS FLOAT
+AS
+BEGIN
+	INSERT INTO SALESMST VALUES(@PNAME,@NAME,@PRICE,@QNT,@TPRICE,GETDATE())
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SALES_DELETE_byID]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create  PROCEDURE [dbo].[SALES_DELETE_byID]
+@id as int
+AS
+BEGIN
+	
+DELETE FROM salesmst where id=@id
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SALES_DELETE_by_name]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create  PROCEDURE [dbo].[SALES_DELETE_by_name]
+@iname as nvarchar(256)
+AS
+BEGIN
+	
+DELETE FROM salesmst where iname=@iname
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SALES_DELETE]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[SALES_DELETE]
+
+AS
+BEGIN
+	
+DELETE FROM salesmst 
+END
+GO
+/****** Object:  StoredProcedure [dbo].[CompanyMst_Update]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[CompanyMst_Update]
+@C_Id as int, 
+	@C_Name as nvarchar(250)
+AS
+BEGIN
+	update CompanyMst set CName=@C_Name where CId=@C_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[CompanyMst_Select_By_ID]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[CompanyMst_Select_By_ID]
+@C_Id as int
+AS
+BEGIN
+select* from CompanyMst  where CId=@C_Id
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[CompanyMst_Select]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create PROCEDURE [dbo].[CompanyMst_Select] 
+	
+AS
+BEGIN
+	select * from CompanyMst
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[CompanyMst_Insert]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[CompanyMst_Insert] 
+	
+@cname as nvarchar(256),
+@person as nvarchar(256),
+@address as nvarchar(256),
+@contact as nvarchar(256)
+AS
+BEGIN
+ 	 Insert into CompanyMst values(@cname,@person,@address,@contact,getdate())
+
+  
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[CompanyMst_Delete]    Script Date: 08/30/2017 10:58:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[CompanyMst_Delete]
+@C_Id as int
+AS
+BEGIN
+	delete from CompanyMst  where CId=@C_Id
+
+  
+	
+END
+GO
